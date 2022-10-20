@@ -20,5 +20,6 @@ jobs:
         id: user-list
         with:
           command: 'iam user list'
+          silent: false
       - name: Display user list
         run: echo ${{ steps.user-list.outputs.output }}
