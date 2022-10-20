@@ -11,6 +11,8 @@ jobs:
       OCI_CLI_KEY_CONTENT: ${{ secrets.OCI_CLI_KEY_CONTENT }}
       OCI_CLI_REGION: ${{ secrets.OCI_CLI_REGION }}
     steps:
+      - name: Install dependencies
+        run: apt install python3-testresources
       - name: Check out repo
         uses: actions/checkout@v2
       - name: List User
