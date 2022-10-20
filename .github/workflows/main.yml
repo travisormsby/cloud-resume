@@ -1,9 +1,9 @@
 on:
   push:
 jobs:
-  my-instances:
+  push-content:
     runs-on: ubuntu-latest
-    name: List the display name and shape of the instances in my compartment
+    name: Push the contents of the repo to a Oracle Object Storage bucket
     env:
       OCI_CLI_USER: ${{ secrets.OCI_CLI_USER }}
       OCI_CLI_TENANCY: ${{ secrets.OCI_CLI_TENANCY }}
@@ -15,5 +15,8 @@ jobs:
         uses: actions/checkout@v2
       - name: List User
         uses: oracle-actions/run-oci-cli-command@v1.1
+        id: user-list
         with:
           command: 'iam user list'
+      - name: Display user list
+        run: echo ${{ steps.user-list.outputs.output }}
