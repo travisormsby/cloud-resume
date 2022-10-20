@@ -1,5 +1,7 @@
 on:
   push:
+    paths:
+      - 'resume/**'
 jobs:
   push-content:
     runs-on: ubuntu-latest
@@ -14,12 +16,10 @@ jobs:
       - name: Install dependencies
         run: sudo apt install python3-testresources
       - name: Check out repo
-        uses: actions/checkout@v2
-      - name: List User
+        uses: actions/checkout@v3
+      - name: Sync files to bucket
         uses: oracle-actions/run-oci-cli-command@v1.1
-        id: user-list
+        id: sync-files
         with:
-          command: 'iam user list'
-          silent: false
-      - name: Display user list
-        run: echo ${{ steps.user-list.outputs.output }}
+          command: 'os object sync -bn resume --src-dir resume'
+          silent: true
