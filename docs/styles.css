@@ -395,7 +395,7 @@ ul {
     top: 0;
     left: 0;
     right: 0;
-    height: 1em;
+    height: 1.2em;
     bottom: 0;
     margin: auto;
     border-radius: .2rem;
@@ -404,7 +404,7 @@ ul {
 }
 
 .Tag:hover:before {
-    transform: scale(1.05, 1.5);
+    transform: scale(1.1, 1.5);
     background-color: var(--color2);
     transition-delay: 0s;
     transition-duration: .2s
